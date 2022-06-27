@@ -75,12 +75,8 @@ class Assist
                 if(!is_null($u))
                     {
 
-                        $user = User::where("id","=",$u->user_id)
-                                    ->limit(1)
-                                    ->first();
-                        $live = Livestream::where('id',$u->livestream_id)
-                                            ->limit(1)
-                                            ->first();
+                        $user = User::find($u->user_id);
+                        $live = Livestream::find($u->livestream_id);
 
                         if($live->viewsperuser > $u->visits)
                             {
